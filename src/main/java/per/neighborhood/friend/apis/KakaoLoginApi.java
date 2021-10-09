@@ -1,13 +1,21 @@
 package per.neighborhood.friend.apis;
 
-import org.springframework.web.bind.annotation.PostMapping;
+import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import per.neighborhood.friend.applications.KakaoService;
+import per.neighborhood.friend.client.dto.KakaoAuthResponse;
 
-@RestController("/kakao")
+@RestController
+@RequestMapping("/kakao")
+@RequiredArgsConstructor
 public class KakaoLoginApi {
 
-    @PostMapping("/login")
-    public String login() {
-        return "Kakao Login";
+    private final KakaoService kakaoService;
+
+    @GetMapping("/login")
+    public KakaoAuthResponse login(String code) {
+        return kakaoService.login(code);
     }
 }
