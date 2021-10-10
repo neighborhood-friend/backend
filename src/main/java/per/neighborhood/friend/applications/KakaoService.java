@@ -17,8 +17,6 @@ public class KakaoService {
     private final KakaoClient kakaoClient;
 
     public KakaoAuthResponse login(String code) {
-        log.info("kakao login code: {}", code);
-
         try {
             Response<KakaoAuthResponse> kakaoAuthResponse = kakaoClient.service().requestAccessToken(
                 "authorization_code",
@@ -38,7 +36,7 @@ public class KakaoService {
 
     private void checkSuccessful(Response<KakaoAuthResponse> kakaoAuthResponse) {
         if (!kakaoAuthResponse.isSuccessful()) {
-            log.error("카카오 로그인 오류 발생: {}", kakaoAuthResponse.raw());
+            log.error("카카오 로그인 통신 오류 발생: {}", kakaoAuthResponse);
         }
     }
 }
