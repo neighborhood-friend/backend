@@ -15,6 +15,10 @@ public class UserService {
     private final UserRepository userRepository;
 
     public void register(KakaoRegisterResponse kakaoRegisterResponse) {
+        if (userRepository.existsByAuthId(kakaoRegisterResponse.getId())) {
+            return;
+        }
+
         userRepository.save(
             User.builder()
                 .authId(kakaoRegisterResponse.getId())
