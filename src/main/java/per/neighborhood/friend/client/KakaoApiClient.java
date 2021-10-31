@@ -11,7 +11,7 @@ import java.util.concurrent.TimeUnit;
 
 @Component
 @RequiredArgsConstructor
-public class KakaoClient {
+public class KakaoApiClient {
 
     private final ObjectMapper objectMapper;
 
@@ -21,13 +21,13 @@ public class KakaoClient {
             .build();
 
         Retrofit retrofit = new Retrofit.Builder()
-            .baseUrl("https://kauth.kakao.com")
+            .baseUrl("https://kapi.kakao.com")
             .addConverterFactory(
                 JacksonConverterFactory.create(objectMapper)
             )
             .client(okHttpClient)
             .build();
 
-        return retrofit.create(KakaoService.class);
+        return retrofit.create(per.neighborhood.friend.client.KakaoService.class);
     }
 }

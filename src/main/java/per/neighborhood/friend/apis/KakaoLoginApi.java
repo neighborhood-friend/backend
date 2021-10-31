@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import per.neighborhood.friend.applications.KakaoService;
 import per.neighborhood.friend.client.dto.KakaoAuthResponse;
+import per.neighborhood.friend.client.dto.KakaoRegisterResponse;
 
 @RestController
 @RequestMapping("/kakao")
@@ -20,6 +21,7 @@ public class KakaoLoginApi {
     public KakaoAuthResponse login(String code) {
         log.info("kakao login code: {}", code);
         KakaoAuthResponse kakaoAuthResponse = kakaoService.login(code);
+        KakaoRegisterResponse kakaoRegisterResponse = kakaoService.getUser(kakaoAuthResponse);
         log.info("kakao login succeed: {}", kakaoAuthResponse);
         return kakaoAuthResponse;
     }
