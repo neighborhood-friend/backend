@@ -24,6 +24,9 @@ public class UserService {
                 .authId(kakaoRegisterResponse.getId())
                 .email(kakaoRegisterResponse.getKakaoAccount().getEmail())
                 .nickname(kakaoRegisterResponse.getKakaoAccount().getProfile().getNickname())
+                .thumbnailImageUrl(kakaoRegisterResponse.getKakaoAccount().getProfile().getThumbnailImageUrl())
+                .profileImageUrl(kakaoRegisterResponse.getKakaoAccount().getProfile().getProfileImageUrl())
+                .isDefaultImage(kakaoRegisterResponse.getKakaoAccount().getProfile().isDefaultImage())
                 .build()
         );
     }
