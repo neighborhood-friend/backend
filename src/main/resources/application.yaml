@@ -1,3 +1,7 @@
 login:
   token:
-    kakao: 033d1e85bce277950ece0a26cdbd9394
+    kakao:
+      client-id: f407a0ea17dec6717cc52af58d4aa5f2
+      client-secret: PMwvP599EYVottDXJM2wLtHCD10GRUPN
+  rediect-uri:
+    kakao: http://localhost:8080/kakao/login
