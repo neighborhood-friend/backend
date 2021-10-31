@@ -2,7 +2,6 @@ package per.neighborhood.friend.applications;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import per.neighborhood.friend.client.KakaoClient;
 import per.neighborhood.friend.client.dto.KakaoAuthResponse;
@@ -16,20 +15,19 @@ import java.io.IOException;
 public class KakaoService {
 
     private static final String AUTHORIZATION_CODE = "authorization_code";
-    @Value("login.redirect-uri.kakao")
-    private final String rediectUri;
-    @Value("login.token.kakao.client-id")
-    private final String clientId;
-    @Value("login.token.kakao.client-secret")
-    private final String clientSecret;
 
     private final KakaoClient kakaoClient;
 
     public KakaoAuthResponse login(String code) {
         try {
             Response<KakaoAuthResponse> kakaoAuthResponse = kakaoClient.service()
-                .requestAccessToken(AUTHORIZATION_CODE, clientId, rediectUri, code, clientSecret)
-                .execute();
+                .requestAccessToken(
+                    AUTHORIZATION_CODE,
+                    "f407a0ea17dec6717cc52af58d4aa5f2",
+                    "http://localhost:8080/kakao/login",
+                    code,
+                    "PMwvP599EYVottDXJM2wLtHCD10GRUPN"
+                ).execute();
 
             checkSuccessful(kakaoAuthResponse);
             return kakaoAuthResponse.body();
