@@ -1,6 +1,7 @@
 package per.neighborhood.friend.domain;
 
 import lombok.*;
+import lombok.experimental.Accessors;
 
 import javax.persistence.*;
 import java.util.Objects;
@@ -25,6 +26,16 @@ public class User {
 
     @Column(name = "nickname", length = 100)
     private String nickname;
+
+    @Column(name = "thumbnail_image_url", length = 100)
+    private String thumbnailImageUrl;
+
+    @Column(name = "profile_image_url", length = 100)
+    private String profileImageUrl;
+
+    @Column(name = "is_default_image", columnDefinition = "TINYINT(1)")
+    @Accessors(fluent = true)
+    private Boolean isDefaultImage;
 
     @Override
     public boolean equals(Object o) {
