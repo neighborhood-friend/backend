@@ -21,10 +21,10 @@ public class UserDetail {
     @Column(name = "nickname", length = 100)
     private String nickname;
 
-    @Column(name = "thumbnail_image_url", length = 100)
+    @Column(name = "thumbnail_image_url", length = 500)
     private String thumbnailImageUrl;
 
-    @Column(name = "profile_image_url", length = 100)
+    @Column(name = "profile_image_url", length = 500)
     private String profileImageUrl;
 
     @Column(name = "is_default_image", columnDefinition = "TINYINT(1)")
