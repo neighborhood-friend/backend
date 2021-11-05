@@ -24,18 +24,9 @@ public class User {
     @Column(name = "email", length = 100)
     private String email;
 
-    @Column(name = "nickname", length = 100)
-    private String nickname;
-
-    @Column(name = "thumbnail_image_url", length = 100)
-    private String thumbnailImageUrl;
-
-    @Column(name = "profile_image_url", length = 100)
-    private String profileImageUrl;
-
-    @Column(name = "is_default_image", columnDefinition = "TINYINT(1)")
-    @Accessors(fluent = true)
-    private Boolean isDefaultImage;
+    @OneToOne
+    @JoinColumn(name = "user_detail_id")
+    private UserDetail userDetail;
 
     @Override
     public boolean equals(Object o) {
