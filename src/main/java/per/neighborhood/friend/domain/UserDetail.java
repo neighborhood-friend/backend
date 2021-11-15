@@ -11,7 +11,7 @@ import java.util.Objects;
 @AllArgsConstructor
 @Builder
 @Getter
-@Table(name = "user_detail")
+@Table(name = "user_details")
 public class UserDetail {
 
     @Id
