@@ -18,7 +18,7 @@ public class UserApi {
     private final UserDetailService userDetailService;
 
     @GetMapping("/nickname/check-duplication")
-    public boolean checkDuplicate(@RequestParam(defaultValue = "") String nickname) {
+    public boolean checkDuplicate(String nickname) {
         return userDetailService.checkDuplicate(nickname);
     }
 
