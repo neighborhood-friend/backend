@@ -34,6 +34,10 @@ public class UserDetail {
     @Accessors(fluent = true)
     private Boolean isDefaultImage;
 
+    public void change(UserDetail userDetail) {
+        this.nickname = userDetail.nickname;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -45,9 +49,5 @@ public class UserDetail {
     @Override
     public int hashCode() {
         return Objects.hash(id);
-    }
-
-    public void change(UserDetail userDetail) {
-        this.nickname = userDetail.nickname;
     }
 }
