@@ -27,7 +27,7 @@ public class UserService {
 
         UserDetail userDetail = userDetailRepository.save(
             UserDetail.builder()
-                .nickname(kakaoRegisterResponse.getKakaoAccount().getProfile().getNickname())
+                .socialNickname(kakaoRegisterResponse.getKakaoAccount().getProfile().getNickname())
                 .thumbnailImageUrl(kakaoRegisterResponse.getKakaoAccount().getProfile().getThumbnailImageUrl())
                 .profileImageUrl(kakaoRegisterResponse.getKakaoAccount().getProfile().getProfileImageUrl())
                 .isDefaultImage(kakaoRegisterResponse.getKakaoAccount().getProfile().isDefaultImage())

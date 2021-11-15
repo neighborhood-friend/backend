@@ -18,7 +18,10 @@ public class UserDetail {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "nickname", length = 100)
+    @Column(name = "social_nickname", length = 100)
+    private String socialNickname;
+
+    @Column(name = "nickname", length = 100, nullable = false, unique = true)
     private String nickname;
 
     @Column(name = "thumbnail_image_url", length = 500)
