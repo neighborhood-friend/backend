@@ -50,17 +50,15 @@ public class UserService {
     public UserDetailResponse changeUserDetail(UserDetailUpdateRequest userDetailUpdateRequest) {
         User user = userRepository.findById(userDetailUpdateRequest.getUserId())
             .orElseThrow(NotFoundUserException::new);
-        UserDetail userDetail = userDetailRepository.findById(user.getUserDetail().getId())
-            .orElseThrow(NotFoundUserException::new);
 
-        userDetail.change(
+        user.getUserDetail().change(
             UserDetail.builder()
                 .nickname(userDetailUpdateRequest.getNickname())
                 .build()
         );
 
         return UserDetailResponse.builder()
-            .nickname(userDetail.getNickname())
+            .nickname(user.getUserDetail().getNickname())
             .build();
     }
 }
