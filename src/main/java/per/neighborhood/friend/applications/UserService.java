@@ -5,6 +5,9 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
+import per.neighborhood.friend.applications.dto.UserDetailResponse;
+import per.neighborhood.friend.applications.dto.UserDetailUpdateRequest;
+import per.neighborhood.friend.applications.exception.NotFoundUserException;
 import per.neighborhood.friend.client.dto.KakaoRegisterResponse;
 import per.neighborhood.friend.domain.User;
 import per.neighborhood.friend.domain.UserDetail;
@@ -41,5 +44,23 @@ public class UserService {
                 .userDetail(userDetail)
                 .build()
         );
+    }
+
+    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    public UserDetailResponse changeUserDetail(UserDetailUpdateRequest userDetailUpdateRequest) {
+        User user = userRepository.findById(userDetailUpdateRequest.getUserId())
+            .orElseThrow(NotFoundUserException::new);
+        UserDetail userDetail = userDetailRepository.findById(user.getUserDetail().getId())
+            .orElseThrow(NotFoundUserException::new);
+
+        userDetail.change(
+            UserDetail.builder()
+                .nickname(userDetailUpdateRequest.getNickname())
+                .build()
+        );
+
+        return UserDetailResponse.builder()
+            .nickname(userDetail.getNickname())
+            .build();
     }
 }

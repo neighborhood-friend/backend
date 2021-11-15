@@ -21,7 +21,7 @@ public class UserDetail {
     @Column(name = "social_nickname", length = 100)
     private String socialNickname;
 
-    @Column(name = "nickname", length = 100, nullable = false, unique = true)
+    @Column(name = "nickname", length = 100, unique = true)
     private String nickname;
 
     @Column(name = "thumbnail_image_url", length = 500)
@@ -45,5 +45,9 @@ public class UserDetail {
     @Override
     public int hashCode() {
         return Objects.hash(id);
+    }
+
+    public void change(UserDetail userDetail) {
+        this.nickname = userDetail.nickname;
     }
 }
