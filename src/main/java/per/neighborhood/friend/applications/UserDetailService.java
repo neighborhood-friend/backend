@@ -10,7 +10,7 @@ import per.neighborhood.friend.domain.UserDetailRepository;
 @Slf4j
 public class UserDetailService {
 
-    private UserDetailRepository userDetailRepository;
+    private final UserDetailRepository userDetailRepository;
 
     public boolean checkDuplicate(String nickname) {
         return userDetailRepository.existsByNickname(nickname);
