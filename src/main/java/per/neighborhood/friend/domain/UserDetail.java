@@ -21,7 +21,7 @@ public class UserDetail {
     @Column(name = "social_nickname", length = 100)
     private String socialNickname;
 
-    @Column(name = "nickname", length = 100, nullable = false, unique = true)
+    @Column(name = "nickname", length = 100, unique = true)
     private String nickname;
 
     @Column(name = "thumbnail_image_url", length = 500)
@@ -33,6 +33,10 @@ public class UserDetail {
     @Column(name = "is_default_image", columnDefinition = "TINYINT(1)")
     @Accessors(fluent = true)
     private Boolean isDefaultImage;
+
+    public void change(UserDetail userDetail) {
+        this.nickname = userDetail.nickname;
+    }
 
     @Override
     public boolean equals(Object o) {
