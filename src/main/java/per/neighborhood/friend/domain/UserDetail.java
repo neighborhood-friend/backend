@@ -2,6 +2,7 @@ package per.neighborhood.friend.domain;
 
 import lombok.*;
 import lombok.experimental.Accessors;
+import per.neighborhood.friend.domain.utils.Util;
 
 import javax.persistence.*;
 import java.util.Objects;
@@ -35,7 +36,7 @@ public class UserDetail {
     private Boolean isDefaultImage;
 
     public void change(UserDetail userDetail) {
-        this.nickname = userDetail.nickname;
+        this.nickname = Util.checkChange(this.nickname, userDetail.nickname);
     }
 
     @Override
