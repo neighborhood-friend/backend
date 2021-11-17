@@ -25,15 +25,21 @@ public class UserDetail {
     @Column(name = "nickname", length = 100, unique = true)
     private String nickname;
 
+    @Column(name = "thumbnail_social_image_url", length = 500)
+    private String thumbnailSocialImageUrl;
+
+    @Column(name = "profile_social_image_url", length = 500)
+    private String profileSocialImageUrl;
+
+    @Column(name = "is_social_default_image", columnDefinition = "TINYINT(1)")
+    @Accessors(fluent = true)
+    private Boolean isSocialDefaultImage;
+
     @Column(name = "thumbnail_image_url", length = 500)
     private String thumbnailImageUrl;
 
     @Column(name = "profile_image_url", length = 500)
     private String profileImageUrl;
-
-    @Column(name = "is_default_image", columnDefinition = "TINYINT(1)")
-    @Accessors(fluent = true)
-    private Boolean isDefaultImage;
 
     public void change(UserDetail userDetail) {
         this.nickname = Util.checkChange(this.nickname, userDetail.nickname);
