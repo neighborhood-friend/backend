@@ -13,4 +13,8 @@ public class UserDetailUpdateRequest {
     private Long userId;
     @JsonProperty("nickname")
     private String nickname;
+    @JsonProperty("thumbnailImageUrl")
+    private String thumbnailImageUrl;
+    @JsonProperty("profileImageUrl")
+    private String profileImageUrl;
 }
