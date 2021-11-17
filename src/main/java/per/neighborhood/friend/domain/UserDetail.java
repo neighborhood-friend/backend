@@ -43,6 +43,8 @@ public class UserDetail {
 
     public void change(UserDetail userDetail) {
         this.nickname = Util.checkChange(this.nickname, userDetail.nickname);
+        this.thumbnailImageUrl = Util.checkChange(this.thumbnailImageUrl, userDetail.thumbnailImageUrl);
+        this.profileImageUrl = Util.checkChange(this.profileImageUrl, userDetail.profileImageUrl);
     }
 
     @Override

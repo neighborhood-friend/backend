@@ -54,6 +54,8 @@ public class UserService {
         user.getUserDetail().change(
             UserDetail.builder()
                 .nickname(userDetailUpdateRequest.getNickname())
+                .thumbnailImageUrl(userDetailUpdateRequest.getThumbnailImageUrl())
+                .profileImageUrl(userDetailUpdateRequest.getProfileImageUrl())
                 .build()
         );
 
