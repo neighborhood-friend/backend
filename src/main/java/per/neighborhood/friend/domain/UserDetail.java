@@ -41,6 +41,9 @@ public class UserDetail {
     @Column(name = "profile_image_url", length = 500)
     private String profileImageUrl;
 
+    @Column(name = "한 줄 소개", length = 500)
+    private String description;
+
     public void change(UserDetail userDetail) {
         this.nickname = Util.checkChange(this.nickname, userDetail.nickname);
         this.thumbnailImageUrl = Util.checkChange(this.thumbnailImageUrl, userDetail.thumbnailImageUrl);
